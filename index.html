@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kamuganti Kalyan | Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0a0a0a;
+      background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+      color: #e0e0ff;
+      line-height: 1.6;
+      overflow-x: hidden;
+      cursor: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .cursor {
+      width: 15px;
+      height: 15px;
+      background-color: #00ffff;
+      position: fixed;
+      top: 0;
+      left: 0;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      box-shadow: 0 0 15px #00ffff, 0 0 30px #ff00ff;
+      transform: translate(-50%, -50%);
+      transition: transform 0.05s ease;
+    }
+    nav {
+      background-color: #0f0f0f;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+    }
+    nav a {
+      color: #ffcc00;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #00ffff;
+      transform: scale(1.2);
+      text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+    }
+    #themeToggle {
+      background: none;
+      border: 2px solid #00ffff;
+      color: #00ffff;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    #themeToggle:hover {
+      background: #00ffff;
+      color: #000;
+    }
+    .contact-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(45deg, #25D366, #128C7E);
+      border: none;
+      color: white;
+      padding: 12px 16px;
+      font-size: 18px;
+      border-radius: 50px;
+      box-shadow: 0 0 15px #25D366;
+      cursor: pointer;
+      z-index: 999;
+    }
+    header, section, footer {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h1, h2, h3 { color: #00ffff; }
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding-top: 4rem;
+    }
+    .hero-text { flex: 1; }
+    .hero img {
+      width: 300px;
+      max-width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 4px solid #ff00ff;
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
+    }
+    .hero img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #ff00ff88;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.7rem 1.2rem;
+      background: linear-gradient(to right, #ff00ff, #00ffff);
+      color: #000;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00ffffaa;
+    }
+    .section-title {
+      border-bottom: 2px solid #00ffff;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+    }
+    .projects {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .project-card {
+      flex: 1 1 calc(50% - 1rem);
+      background-color: #1a1a1a;
+      padding: 1rem;
+      border-radius: 10px;
+      border: 2px solid #00ffff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px #00ffff99;
+    }
+    .project-card h3 { margin-bottom: 0.5rem; }
+    .contact-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+    }
+    .contact-section img {
+      width: 200px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 2px solid #00ffff;
+    }
+    footer {
+      text-align: center;
+      color: #888;
+      margin-top: 2rem;
+    }
+    @media screen and (max-width: 600px) {
+      nav { flex-direction: column; align-items: center; }
+      header, section, footer { padding: 1rem; }
+      .hero { flex-direction: column; align-items: center; text-align: center; }
+      .hero img { width: 100%; }
+      .contact-section { flex-direction: column; align-items: flex-start; }
+      .project-card { flex: 1 1 100%; }
+    }
+    
+  
+  body.light-mode nav a {
+    color: #000;
+  }
+  body.light-mode nav a:hover {
+    color: #ff6600;
+    text-shadow: none;
+  }
+  body.light-mode .btn {
+    background: linear-gradient(to right, #ffd700, #ffa500);
+    color: #000;
+  }
+  body.light-mode .project-card {
+    background-color: #f5f5f5;
+    border-color: #00cccc;
+  }
+  body.light-mode h1, 
+  body.light-mode h2, 
+  body.light-mode h3 {
+    color: #222;
+  }
+  body.light-mode .section-title {
+    border-color: #00cccc;
+  }
+</style>
+</head>
+<body>
+  <div class="cursor"></div>
+  <nav>
+    <div>
+      <a href="#">Home</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+    
+  </nav>
+
+  <button class="contact-button" onclick="window.location.href='https://wa.me/917989239551'">📱 Chat</button>
+
+  <header class="hero" data-aos="fade-up">
+    <div class="hero-text">
+      <h1>Kamuganti Kalyan</h1>
+      <h2>A Developer</h2>
+      <p>
+        I'm a passionate developer who loves building clean, functional apps.
+        I enjoy solving problems with code and constantly learning new tech.
+        Whether it's front-end, back-end, or full-stack — I'm all in.
+      </p>
+      <a href="./KALYAN_RESUME.pdf" class="btn" download>Download Resume</a>
+    </div>
+    <img src="./kk photo1.jpg">
+  </header>
+
+  <section id="skills" data-aos="fade-right">
+    <h2 class="section-title">Skills</h2>
+    <p>HTML, CSS, MySQL, C, Java, Python, Content Writing, Leadership, JavaScript, React</p>
+  </section>
+
+  <section id="projects" data-aos="zoom-in">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <h3>Driver Fatigue Detection System</h3>
+        <p>A real-time driver drowsiness detection system using OpenCV, MediaPipe & Python.</p>
+        <a href="https://github.com/KALYAN07YADAV/driver-fatigue-detection" target="_blank">GitHub Repo</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" data-aos="fade-left">
+    <h2 class="section-title">Education</h2>
+    <ul>
+      <li><strong>B.Tech in CSE</strong>, BVRIT (2023–2027) – CGPA: 8.76/10</li>
+      <li><strong>Senior Secondary (XII)</strong>, Resonance Junior College (2023) – 95.30%</li>
+      <li><strong>Secondary (X)</strong>, Bhrungy International School (2021) – CGPA: 10.00/10</li>
+    </ul>
+  </section>
+
+  <section id="contact" class="contact" data-aos="fade-up">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-section">
+      <ul>
+        <li>Email: <a href="mailto:kamugantikalyan@gmail.com">kamugantikalyan@gmail.com</a></li>
+        <li>Phone: +91 7989239551</li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/kamuganti-kalyan-96715b293" target="_blank">kamuganti-kalyan</a></li>
+        <li>GitHub: <a href="https://github.com/KALYAN07YADAV" target="_blank">@KALYAN07YADAV</a></li>
+      </ul>
+      <img src="./kk photo2.jpg">
+    </div>
+  </section>
+
+  <footer data-aos="fade-in">
+    <p>&copy; 2025 Kamuganti Kalyan</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    const cursor = document.querySelector('.cursor');
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.top = e.clientY + 'px';
+      cursor.style.left = e.clientX + 'px';
+    });
+  </script>
+</body>
+</html>
